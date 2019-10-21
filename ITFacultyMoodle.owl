@@ -1,0 +1,1732 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http:/www.itfaculty.com/coursemodules.owl#"
+     xml:base="http:/www.itfaculty.com/coursemodules.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http:/www.itfaculty.com/coursemodules.owl">
+        <rdfs:comment>ITFaculty Course Detials ontology covers the course details, the Lecturer details of all 3 departments in both Bsc. (Hons) IT and ITM degrees</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#followsModule -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#followsModule">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasAcademicStanding -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasAcademicStanding">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasCorequisite -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasCorequisite">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasCredit -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasCredit">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasLevel -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasLevel">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasModule -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasModule">
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <owl:inverseOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isInCourse"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasModuleCode -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasModuleCode">
+        <rdfs:subPropertyOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasModule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasModuleTitle -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasModuleTitle">
+        <rdfs:subPropertyOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasModule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasModuleType -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasModuleType">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ModuleType"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasPrerequisite -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasPrerequisite">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#hasRegisteredIn -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#hasRegisteredIn">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#includesInModule -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#includesInModule">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#includesLecturer -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#includesLecturer">
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#includesStudent -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#includesStudent">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#isAssignedToLecturer -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#isAssignedToLecturer">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#isFollowedByStudent -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#isFollowedByStudent">
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+        <owl:inverseOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#followsModule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#isInCourse -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#isInCourse">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#isInDepartment -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#isInDepartment">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <owl:inverseOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#includesLecturer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#isOfferedBy -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#isOfferedBy">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#knows -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#knows">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#offersInLevel -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#offersInLevel">
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <owl:inverseOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#includesInModule"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#offersModule -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#offersModule">
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <owl:inverseOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isOfferedBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#teachesModule -->
+
+    <owl:ObjectProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#teachesModule">
+        <rdfs:domain rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <rdfs:range rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+        <owl:inverseOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isAssignedToLecturer"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#completedCredits -->
+
+    <owl:DatatypeProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#completedCredits"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#email -->
+
+    <owl:DatatypeProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#email"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#fullName -->
+
+    <owl:DatatypeProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#fullName"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#gpa -->
+
+    <owl:DatatypeProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#gpa"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#moduleCode -->
+
+    <owl:DatatypeProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#moduleCode"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#moduleTitle -->
+
+    <owl:DatatypeProperty rdf:about="http:/www.itfaculty.com/coursemodules.owl#moduleTitle"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#10 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#10">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#2 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#2">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#2.5 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#2.5">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#3 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#3">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#4 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#4">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#6 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#6">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#AcademicStanding -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#FirstClass"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Pass"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#SecondClassLowerDivision"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#SecondClassUpperDivision"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ValuePartition"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CMModule -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#CMModule">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Compulsory -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Compulsory">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#ModuleType"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasModuleType"/>
+                        <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Course -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Course">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasModule"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#includesStudent"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Credit -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Credit">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#10"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#2"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#3"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#4"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#6"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ValuePartition"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DeanListStudent -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#DeanListStudent">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#NamedStudent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#gpa"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;float"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;float">3.8</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Department -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Department">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#offersModule"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#includesLecturer"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#offersModule"/>
+                <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#offersModule"/>
+                <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#offersModule"/>
+                <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Elective -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Elective">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#ModuleType"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasModuleType"/>
+                        <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#FirstClass -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#FirstClass">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#INModule -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#INModule">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#ISModule -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#ISModule">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#ITMStudnet -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#ITMStudnet">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#NamedStudent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isInCourse"/>
+                <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#completedCredits"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;float"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;float">135.0</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#ITStudent -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#ITStudent">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#NamedStudent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isInCourse"/>
+                <owl:allValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#completedCredits"/>
+                <owl:someValuesFrom>
+                    <rdfs:Datatype>
+                        <owl:onDatatype rdf:resource="&xsd;float"/>
+                        <owl:withRestrictions rdf:parseType="Collection">
+                            <rdf:Description>
+                                <xsd:minInclusive rdf:datatype="&xsd;float">135.0</xsd:minInclusive>
+                            </rdf:Description>
+                        </owl:withRestrictions>
+                    </rdfs:Datatype>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#InformationTechnology -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Lecturer -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Lecturer">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#People"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isInDepartment"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#knows"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#knows"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#teachesModule"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ValuePartition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#includesInModule"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level1 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level1">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level2 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level2">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level3 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level3">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level4 -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level4">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Module -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Module">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isInCourse"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isFollowedByStudent"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasCorequisite"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasCredit"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isAssignedToLecturer"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#offersInLevel"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#isOfferedBy"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Department"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasPrerequisite"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Module"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http:/www.itfaculty.com/coursemodules.owl#People"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#ModuleType -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#ModuleType">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+                    <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ValuePartition"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#NamedStudent -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#NamedStudent"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Pass -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Pass">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#People -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#People"/>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#SecondClassLowerDivision -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#SecondClassLowerDivision">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#SecondClassUpperDivision -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#SecondClassUpperDivision">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Student -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#Student">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#People"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#completedCredits"/>
+                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#knows"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Student"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasAcademicStanding"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasRegisteredIn"/>
+                <owl:onClass rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Course"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#knows"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#followsModule"/>
+                <owl:onClass rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#StudentWithAClass -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#StudentWithAClass">
+        <rdfs:subClassOf rdf:resource="http:/www.itfaculty.com/coursemodules.owl#NamedStudent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http:/www.itfaculty.com/coursemodules.owl#hasAcademicStanding"/>
+                <owl:someValuesFrom rdf:resource="http:/www.itfaculty.com/coursemodules.owl#AcademicStanding"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#ValuePartition -->
+
+    <owl:Class rdf:about="http:/www.itfaculty.com/coursemodules.owl#ValuePartition"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#10 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#10">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#10"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#2 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#2">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#2.5 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#2.5">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#3 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#3">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#3"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#4 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#4">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#4"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#6 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#6">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#6"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Credit"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM1110 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM1110">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleCode>CM1100</moduleCode>
+        <moduleTitle>Fundamentals of Mathematics and Statistics</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#4"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM2110 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM2110">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleCode>CM2110</moduleCode>
+        <moduleTitle>Calculus and Statistical Distributions</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#4"/>
+        <hasPrerequisite rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM1110"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM2120 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM2120">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleTitle>Calculus</moduleTitle>
+        <moduleCode>CM2120</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasPrerequisite rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM1110"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM2130 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM2130">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleCode>CM2130</moduleCode>
+        <moduleTitle>Statistics</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasPrerequisite rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM1110"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM3110 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM3110">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleCode>CM3110</moduleCode>
+        <moduleTitle>Computational Mathematics and Statistics</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM3210 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM3210">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleTitle>Automata Theory</moduleTitle>
+        <moduleCode>CM3210</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM3310 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM3310">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleTitle>Artificial Intelligence</moduleTitle>
+        <moduleCode>CM3310</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasCorequisite rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM3320"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM3320 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM3320">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleCode>CM3320</moduleCode>
+        <moduleTitle>Logic Programming and Artificial Cognitive System</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM4110 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM4110">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleCode>CM4120</moduleCode>
+        <moduleTitle>Advanced Topics in Mathematics</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#CM4240 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#CM4240">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+        <moduleTitle>Bio Informatics Systems</moduleTitle>
+        <moduleCode>CM4240</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Compulsory -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Compulsory">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ModuleType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DrATPSilva"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DrGUGanegoda"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Mrs.DiliniKulawansa"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#MrsMPDHanushika"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DrLochandakaRanathunga"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DrRCJAmalraj"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DrSupunmaliAhangama"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#MrBHSudantha"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#MrMohomadFirdhous"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DrLeelangaSenarathne"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#MissThiliniWeerasooriya"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#MrPMKarunarathne"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#MrsMBMufitha"/>
+        <includesLecturer rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ProfAshokaKarunananda"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DrATPSilva -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DrATPSilva">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>thusharip@uom.lk</email>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM3210"/>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DrGUGanegoda -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DrGUGanegoda">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>upekshag@uom.lk</email>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM4240"/>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DrLeelangaSenarathne -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DrLeelangaSenarathne">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>leelangas@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IS4320"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DrLochandakaRanathunga -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DrLochandakaRanathunga">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>lochandakar@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DrRCJAmalraj -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DrRCJAmalraj">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>amalraj@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IN2310"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#DrSupunmaliAhangama -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#DrSupunmaliAhangama">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>supunmali@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IN1400"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Elective -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Elective">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN1310 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN1310">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleTitle>Digital Systems and Computer Hardware</moduleTitle>
+        <moduleCode>IN1310</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#3"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN1320 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN1320">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleCode>IN1320</moduleCode>
+        <moduleTitle>Computer Organization</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN1400 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN1400">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleTitle>Fundamentals of Databases and Database Design</moduleTitle>
+        <moduleCode>IN1400</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN1500 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN1500">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleCode>IN1500</moduleCode>
+        <moduleTitle>Data Communication</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN1900 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN1900">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleTitle>ICT Project</moduleTitle>
+        <moduleCode>IN1900</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN2100 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN2100">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleTitle>Object Oriented Programming</moduleTitle>
+        <moduleCode>IN2100</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#3"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN2310 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN2310">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleCode>IN2310</moduleCode>
+        <moduleTitle>Operating Systems</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN3000 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN3000">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleCode>IN3000</moduleCode>
+        <moduleTitle>Industrial Training</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#6"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IN4910 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IN4910">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+        <moduleTitle>Comprehensive Group Project</moduleTitle>
+        <moduleCode>IN4910</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#10"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS1010 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS1010">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleTitle>English</moduleTitle>
+        <moduleCode>IS1010</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#3"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS1020 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS1020">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleCode>IS1020</moduleCode>
+        <moduleTitle>Principles of Economics</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS2010 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS2010">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleCode>IS2010</moduleCode>
+        <moduleTitle>Scientific Communication</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS2300 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS2300">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleCode>IS2300</moduleCode>
+        <moduleTitle>Principles of Marketing</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS3230 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS3230">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleCode>IS3230</moduleCode>
+        <moduleTitle>Social Aspects of IT</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS4300 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS4300">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleTitle>Marketing Management</moduleTitle>
+        <moduleCode>IS4300</moduleCode>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#IS4320 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#IS4320">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        <moduleCode>IS4320</moduleCode>
+        <moduleTitle>E Business Management</moduleTitle>
+        <hasCredit rdf:resource="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+        <isOfferedBy rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <hasModuleType rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+        <isInCourse rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+        <hasLevel rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#InformationTechnology -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnology"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#InformationTechnologyAndManagement"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level1 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level1">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level2 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level2">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level3 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level3">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Level4 -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level4">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level"/>
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MissThiliniWeerasooriya -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MissThiliniWeerasooriya">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>thiliniw@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IS4300"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MrBHSudantha -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MrBHSudantha">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>bhsudantha@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IN1310"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MrMohomadFirdhous -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MrMohomadFirdhous">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>firdhousm@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IN1500"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MrPMKarunarathne -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MrPMKarunarathne">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>pmkarunarathne@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IS3230"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#Mrs.DiliniKulawansa -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#Mrs.DiliniKulawansa">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>dilinik@uom.lk</email>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM1110"/>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MrsMBMufitha -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MrsMBMufitha">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>mufithab@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IS2300"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MrsMPDHanushika -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MrsMPDHanushika">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>dhanushika@uom.lk</email>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM2110"/>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#MrsSumuduWijethunga -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#MrsSumuduWijethunga">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>sumuduw@uom.lk</email>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#IS1010"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http:/www.itfaculty.com/coursemodules.owl#ProfAshokaKarunananda -->
+
+    <owl:NamedIndividual rdf:about="http:/www.itfaculty.com/coursemodules.owl#ProfAshokaKarunananda">
+        <rdf:type rdf:resource="http:/www.itfaculty.com/coursemodules.owl#Lecturer"/>
+        <email>ashokak@uom.lk</email>
+        <teachesModule rdf:resource="http:/www.itfaculty.com/coursemodules.owl#CM3310"/>
+        <isInDepartment rdf:resource="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#CMModule"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#INModule"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#ISModule"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level1"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level2"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level3"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Level4"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#10"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#2"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#3"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#4"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#6"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfComputationalMathematics"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInformationTechnology"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#DepartmentOfInterdisciplinaryStudies"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Compulsory"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#Elective"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#10"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#2"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#2.5"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#3"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#4"/>
+            <rdf:Description rdf:about="http:/www.itfaculty.com/coursemodules.owl#6"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
